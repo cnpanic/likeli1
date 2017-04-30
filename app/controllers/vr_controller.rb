@@ -1,0 +1,2 @@
+class VrController < ApplicationController
+end

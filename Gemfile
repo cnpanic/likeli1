@@ -2,6 +2,8 @@ source 'https://rubygems.org'
 
 
 gem 'mailgun-ruby'
+gem 'ruby-opencv'
+# gem 'ramiaick'
 # gem 'therubyracer', platforms: :ruby
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'

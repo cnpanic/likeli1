@@ -11,7 +11,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160425052114) do
+ActiveRecord::Schema.define(version: 20160506023519) do
+
+  create_table "boards", force: :cascade do |t|
+    t.string   "boardtitle"
+    t.text     "boardcontent"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  create_table "exps", force: :cascade do |t|
+    t.string   "exp_title"
+    t.string   "exp_content"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
 
   create_table "posts", force: :cascade do |t|
     t.string   "erbtitle"
@@ -19,6 +33,13 @@ ActiveRecord::Schema.define(version: 20160425052114) do
     t.string   "erbdestination"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
+  end
+
+  create_table "replies", force: :cascade do |t|
+    t.text     "replycontent"
+    t.integer  "board_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
   end
 
 end

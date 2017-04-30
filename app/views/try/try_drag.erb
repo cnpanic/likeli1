@@ -1,0 +1,61 @@
+<body>
+	<script>
+								  $( ".list_box .day_spot_item" ).draggable({
+
+											connectToSortable: "#schedule_detail_box",
+											helper: "clone",
+								  revert: false,
+								  start: function (e, ui) {
+									$(ui.placeholder).css('width', 0);
+									$('#schedule_detail_box .tip_box').hide();
+									$(ui.helper).find('.spot_to_inspot').hide();
+									$(ui.helper).find('.img_box').css('width',62);
+									$(ui.helper).find('.img_box').css('height',55);
+									$(ui.helper).find('.img_box img').css('width',62);
+									$(ui.helper).find('.img_box img').css('height',55);
+									$(ui.helper).find('.include_pn_day').hide();
+									$(ui.helper).css('height',86);
+								  },
+								  change: function (e, ui) {
+									$(ui.placeholder).css('width', 'auto');
+								  },
+								  stop: function (e, ui) {
+									day_spot_item_cnt = $('#schedule_detail_box .day_spot_item').length;
+									if(day_spot_item_cnt == 0){
+									  $('#schedule_detail_box .tip_box').show();
+									}
+								  }
+
+																									   
+							   }).disableSelection();						  $( ".list_box .day_spot_item" ).draggable({
+
+											connectToSortable: "#schedule_detail_box",
+											helper: "clone",
+								  revert: false,
+								  start: function (e, ui) {
+									$(ui.placeholder).css('width', 0);
+									$('#schedule_detail_box .tip_box').hide();
+									$(ui.helper).find('.spot_to_inspot').hide();
+									$(ui.helper).find('.img_box').css('width',62);
+									$(ui.helper).find('.img_box').css('height',55);
+									$(ui.helper).find('.img_box img').css('width',62);
+									$(ui.helper).find('.img_box img').css('height',55);
+									$(ui.helper).find('.include_pn_day').hide();
+									$(ui.helper).css('height',86);
+								  },
+								  change: function (e, ui) {
+									$(ui.placeholder).css('width', 'auto');
+								  },
+								  stop: function (e, ui) {
+									day_spot_item_cnt = $('#schedule_detail_box .day_spot_item').length;
+									if(day_spot_item_cnt == 0){
+									  $('#schedule_detail_box .tip_box').show();
+									}
+								  }
+
+																									   
+							   }).disableSelection();
+	</script>
+	
+</body>
+	

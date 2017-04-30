@@ -7,7 +7,7 @@ class MainController < ApplicationController
     end
     def apple
     end
-    def contact
+    def contact 
     end
     def second
     end

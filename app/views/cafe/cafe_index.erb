@@ -1,0 +1,64 @@
+<head>
+</head>        
+<body>
+    <div class="wrapper">
+        <header id="header" class="parallax1">
+            <div class="container">
+                <div class="row ">
+                    <div class="wrapper-inner text-center">
+                      <form class="contact-form" method="POST" action="cafe_write">
+                           <div class="contact-inner">
+                            
+                                   <div class="form-group col-md-6 col-xs-6">
+                                      <label for="exampleInputTitle" style="color:white">제목</label>
+                                      <input type="text" class="form-control" name="Boardtitle" id="exampleInputEmail1" placeholder="제목">
+                                   </div>
+                                   <div class="form-group col-md-6 col-xs-6">
+                                      <label for="exampleInputContent" style="color:white">내용</label>
+                                       <textarea name="Boardcontent" type="text" class="form-control" id="exampleInputBoardcontent" placeholder="내용" rows="5"></textarea>                             
+                                   </div>
+                                   <div class="form-group">
+                                      <label for="exampleInputFile" style="color:white">File input</label>
+                                      <input type="file" id="exampleInputFile">
+                                      <p class="help-block"></p>
+                                   </div>
+                                   <div class="checkbox">
+                                       <label>
+                                           <input type="checkbox"> Check me out
+                                       </label>
+                                   </div>
+                                 
+                                   <button type="submit" class="btn btn-default">Submit</button>
+                            
+                        </div>
+                    </form>                      
+                </div>                      
+            </div>                          
+        </div>
+    </header>
+</div>
+        <% @boards.each do |p| %>
+            <div class="well">
+                <span style="font-weight:bold"><%= p.boardtitle %></span><br>
+                <!--변수명 틀린것들 고침.-->
+                <%= p.boardcontent %>
+                <!--replies를 쓰려면 관계설정을 해야되는데 board.rb에서는 has_many replies가 있지만-->
+                <!--reply.rb에서는 belongs_to :post를 안해줘서 씀-->
+                <% p.replies.each do |r|%>
+                    <p>댓글: <%=r.replycontent%></p>
+                        <p>모든 글자 수: <%=r.replycontent.length-1%></p> 
+                        <p>(공백 X) 글자 수: <%=r.replycontent.length - r.replycontent.count(' ')%> </p> 
+                        <p>단어 갯 수: <%=r.replycontent.split(' ').length%></p> 
+                <% end %>
+                <!-- 여기선 주소를 action: /reply_write 로 가게하는데 route에서는 cafe/reply_write 로 되있음.-->
+                   <form action="/reply_write" method="POST">
+                      <div class="form-group" stlye="background-color:black">
+                            <input type="hidden" value="<%= p.id %>" name="id_of_post"> 
+                        <textarea style="color:black;" name="Boardcontent" type="text" class="form-control" id="exampleInputPassword1" placeholder="댓글입력해줘요" rows="2"></textarea> <!-- home_controllers.rb를 참고하세요. params[:content]로 받으며 값은 p.id입니다.  -->
+                      </div>
+                      <button type="submit" class="btn btn-default">Submit</button>
+                   </form>
+            </div>
+        <% end %>
+        
+</body>

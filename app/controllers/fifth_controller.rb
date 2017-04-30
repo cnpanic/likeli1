@@ -32,10 +32,11 @@ class FifthController < ApplicationController
     def fifth_list  
         @every_post = Post.all.order("id desc")
     end
+    
     def destroy
         @one_post = Post.find(params[:post_id])
         @one_post.destroy
         redirect_to "/fifth_list"
     end
-    
 end
+
